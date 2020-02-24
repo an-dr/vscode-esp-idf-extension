@@ -21,5 +21,4 @@
     "extension.cmdNotWebIDE": "所选命令在WebIDE中不可用",
     "extension.enterOpenOcdConfigMessage": "在OpenOCD脚本目录中输入配置文件列表",
     "extension.enterCustomPathsMessage": "请输入额外添加到 PATH 环境变量中的路径"
-
 }
