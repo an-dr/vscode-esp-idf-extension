@@ -4,11 +4,6 @@
         {
             "label": "Build - Build project",
             "type": "shell",
-            "options": {
-                "env": {
-                    "PATH": "${config:idf.customExtraPaths}",
-                }
-            },
             "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py build",
             "options": {
                 "env": {
@@ -28,7 +23,7 @@
                     "column": 3,
                     "severity": 4,
                     "message": 5
-                } 
+                }
             },
             "group": {
                 "kind": "build",
@@ -49,7 +44,7 @@
                     "column": 3,
                     "severity": 4,
                     "message": 5
-                } 
+                }
             },
         },
         {
@@ -69,25 +64,20 @@
                     "column": 3,
                     "severity": 4,
                     "message": 5
-                } 
+                }
             },
         },
         {
             "label": "Flash - Flash the device",
             "type": "shell",
-            "options": {
-                "env": {
-                    "PATH": "${config:idf.customExtraPaths}",
-                }
-            },
             "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py -p ${config:idf.port} -b ${config:idf.baudRate} flash",
-            "options": {
-                "env": {
-                    "PATH": "${config:idf.customExtraPaths}",
-                }
-            },
             "windows": {
                 "command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py flash -p ${config:idf.portWin} -b ${config:idf.baudRate}"
+            },
+            "options": {
+                "env": {
+                    "PATH": "${config:idf.customExtraPaths}",
+                }
             },
             "problemMatcher": {
                 "owner": "cpp",
@@ -99,27 +89,22 @@
                     "column": 3,
                     "severity": 4,
                     "message": 5
-                } 
+                }
             },
         },
         {
             "label": "Monitor: Start the monitor",
             "type": "shell",
+            "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py -p ${config:idf.port} -b ${config:idf.baudRate} monitor",
+            "windows": {
+                "command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py monitor -p ${config:idf.portWin} -b ${config:idf.baudRate}"
+            }
             "options": {
                 "env": {
                     "PATH": "${config:idf.customExtraPaths}",
                 }
             },
             "dependsOn": "Flash - Flash the device",
-            "options": {
-                "env": {
-                    "PATH": "${config:idf.customExtraPaths}",
-                }
-            },
-            "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py -p ${config:idf.port} -b ${config:idf.baudRate} monitor",
-            "windows": {
-                "command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py monitor -p ${config:idf.portWin} -b ${config:idf.baudRate}"
-            }
         },
         {
             "label":"OpenOCD: Start openOCD",
@@ -130,14 +115,14 @@
                 "focus": false,
                 "panel":"new"
             },
+            "command":"openocd -s ${command:espIdf.getOpenOcdScriptValue} ${command:espIdf.getOpenOcdConfigs}",
+            "windows": {
+                "command": "openocd.exe -s ${command:espIdf.getOpenOcdScriptValue} ${command:espIdf.getOpenOcdConfigs}"
+            },
             "options": {
                 "env": {
                     "PATH": "${config:idf.customExtraPaths}",
                 }
-            },
-            "command":"openocd -s ${command:espIdf.getOpenOcdScriptValue} ${command:espIdf.getOpenOcdConfigs}",
-            "windows": {
-                "command": "openocd.exe -s ${command:espIdf.getOpenOcdScriptValue} ${command:espIdf.getOpenOcdConfigs}"
             },
             "problemMatcher": {
                 "owner": "cpp",
@@ -149,7 +134,7 @@
                     "column": 3,
                     "severity": 4,
                     "message": 5
-                } 
+                }
             },
         },
         {
