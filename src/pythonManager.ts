@@ -53,7 +53,8 @@ export async function installPythonEnv(espDir: string,
     const pyDir = process.platform === "win32" ? ["Scripts", "python.exe"] : ["bin", "python"];
     const virtualEnvPython = path.join(pyEnvPath, ...pyDir);
     const requirements = path.join(espDir, "requirements.txt");
-    const debugAdapterRequirements = path.join(utils.extensionContext.extensionPath, "esp_debug_adapter", "requirements.txt");
+    const debugAdapterRequirements = path.join(utils.extensionContext.extensionPath,
+                                               "esp_debug_adapter", "requirements.txt");
 
     const creatEnvMsg = `Creating a new Python environment in ${pyEnvPath} ...\n`;
     const installPyPkgsMsg = `Installing ESP-IDF python packages in ${pyEnvPath} ...\n`;
