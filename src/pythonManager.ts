@@ -118,6 +118,16 @@ export async function installPythonEnv(espDir: string,
     if (channel) {
         channel.appendLine(pyDAReqInstallResult + "\n");
     }
+    // Debug Adapter Python Requirements
+    pyTracker.Log = installDAPyPkgsMsg;
+    const pyDAReqInstallResult = await utils.execChildProcess(
+        `${virtualEnvPython} -m pip install -r ${debugAdapterRequirements}`,
+        pyEnvPath, channel);
+    pyTracker.Log = pyDAReqInstallResult;
+    pyTracker.Log = "\n";
+    if (channel) {
+        channel.appendLine(pyDAReqInstallResult + "\n");
+    }
     return virtualEnvPython;
 }
 

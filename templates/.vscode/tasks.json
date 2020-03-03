@@ -4,6 +4,11 @@
         {
             "label": "Build - Build project",
             "type": "shell",
+            "options": {
+                "env": {
+                    "PATH": "${config:idf.customExtraPaths}",
+                }
+            },
             "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py build",
             "options": {
                 "env": {
@@ -75,7 +80,17 @@
         {
             "label": "Flash - Flash the device",
             "type": "shell",
+            "options": {
+                "env": {
+                    "PATH": "${config:idf.customExtraPaths}",
+                }
+            },
             "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py -p ${config:idf.port} -b ${config:idf.baudRate} flash",
+            "options": {
+                "env": {
+                    "PATH": "${config:idf.customExtraPaths}",
+                }
+            },
             "windows": {
                 "command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py flash -p ${config:idf.portWin} -b ${config:idf.baudRate}"
             },
@@ -119,6 +134,11 @@
                 "reveal": "never",
                 "focus": false,
                 "panel":"new"
+            },
+            "options": {
+                "env": {
+                    "PATH": "${config:idf.customExtraPaths}",
+                }
             },
             "command":"openocd -s ${command:espIdf.getOpenOcdScriptValue} ${command:espIdf.getOpenOcdConfigs}",
             "windows": {
